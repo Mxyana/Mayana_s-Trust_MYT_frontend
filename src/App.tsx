@@ -16,14 +16,14 @@ export default function App() {
   return (
     <TonConnectUIProvider manifestUrl={manifestUrl}>
       <div style={styles.pageBackground}>
-        
+
         {/* ADDED: The High-Visibility Security Banner */}
         <div style={styles.warningBanner}>
           ⚠️ SMART CONTRACT AUDIT IN PROCESS — DO NOT SEND REAL FUNDS, ANY FUNDS SENT MUST BE MANUALLY REVIEWED FOR REFUND WITH 25 PERCENT PENALTY
-                  </div>
+        </div>
 
         <div style={styles.ambientGlow}></div>
-        
+
         <motion.div 
           style={styles.navWrapper}
           initial={{ opacity: 0, y: -30 }}
@@ -34,7 +34,7 @@ export default function App() {
         </motion.div>
 
         <main style={styles.mainContent}>
-          
+
           <motion.section 
             id="home"
             style={styles.heroSection}
@@ -45,16 +45,16 @@ export default function App() {
             <motion.div style={styles.badge} variants={itemVariants}>
               <span style={styles.badgeDot}></span> SYSTEM STATUS: OPERATIONAL
             </motion.div>
-            
+
             <motion.h2 style={styles.heroTitle} variants={itemVariants}>
               Funding the Next <br /> <span style={styles.heroTitleAccent}>Generation of Builders</span>
             </motion.h2>
-            
+
             <motion.div style={styles.heroTextContainer} variants={itemVariants}>
               <p style={styles.heroText}>Mayana's Trust [MYT] isn't just a vault; it's a decentralized engine designed to bridge the gap between community liquidity and high-impact innovation on the TON blockchain.</p>
               <p style={styles.heroSubText}>We provide the architecture. You provide the fuel. Together, we build the open network of tomorrow.</p>
             </motion.div>
-            
+
             <motion.div style={styles.scrollIndicator} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0}} transition={{ opacity: { delay: 1.2, duration: 0.6 }, y: { repeat: Infinity, duration: 2.4, ease: "easeInOut", delay: 1.8 } }}>
               SCROLL TO EXPLORE ARCHITECTURE
             </motion.div>
@@ -111,47 +111,28 @@ export default function App() {
 }
 
 const styles: Record<string, any> = {
-  // NEW: Premium, non-panic security banner (Obsidian & Gold)
   warningBanner: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    background: 'rgba(10, 10, 10, 0.85)', // Dark obsidian to blend in
-    backdropFilter: 'blur(12px)', // Frosted glass effect
-    WebkitBackdropFilter: 'blur(12px)',
-    color: 'gold', // Signature gold to stand out without screaming danger
-    borderBottom: '1px solid rgba(212,175,55,0.25)', // Subtle gold bottom border
-    textAlign: 'center',
-    padding: '10px 20px',
-    fontSize: '11px',
-    fontWeight: 700,
-    letterSpacing: '1.5px',
-    zIndex: 2000,
-    boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)'
+    position: 'fixed', top: 0, left: 0, width: '100%',
+    background: 'rgba(10, 10, 10, 0.85)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
+    color: 'gold', borderBottom: '1px solid rgba(212,175,55,0.25)',
+    textAlign: 'center', padding: '8px 12px', fontSize: '10px',
+    fontWeight: 700, letterSpacing: '1px', lineHeight: '1.4',
+    zIndex: 2000, boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)', boxSizing: 'border-box'
   },
-  
+
   pageBackground: { backgroundColor: '#050505', minHeight: '100vh', width: '100%', color: 'white', fontFamily: '"Inter", "Segoe UI", Roboto, sans-serif', position: 'relative', overflowX: 'hidden' },
   ambientGlow: { position: 'fixed', top: 0, left: '50%', transform: 'translateX(-50%)', width: '100%', height: '100vh', background: 'radial-gradient(circle at 50% 20%, rgba(212,175,55,0.03) 0%, transparent 70%)', pointerEvents: 'none', zIndex: 0 },
-  
-  // ADJUSTED: Pushed top down to 32px to make room for the warning banner
+
   navWrapper: { 
-    position: 'fixed', 
-    top: '32px', 
-    left: 0, 
-    width: '100%', 
-    padding: '24px 40px 0', 
-    zIndex: 1000, 
-    pointerEvents: 'none', 
-    display: 'flex', 
-    justifyContent: 'center' 
+    position: 'fixed', top: '50px', left: 0, width: '100%', 
+    padding: '12px 16px 0', 
+    zIndex: 1000, pointerEvents: 'none', display: 'flex', 
+    justifyContent: 'center', boxSizing: 'border-box' 
   },
-  
+
   mainContent: { position: 'relative', zIndex: 1 },
-  
-  // ADJUSTED: Extra padding top so the hero text clears the header and banner completely
+
   heroSection: { minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '140px 40px 80px' },
-  
   heroTextContainer: { maxWidth: '720px', margin: '0 auto' },
   heroSubText: { fontSize: '17px', color: '#666', marginTop: '20px', lineHeight: '1.65' },
   dataSection: { padding: '140px 40px', background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.01), transparent)', marginTop: '60px' },
