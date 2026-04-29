@@ -1,10 +1,12 @@
+import React from 'react';
+
 export function ProjectGallery() {
   const projects = [
     {
       title: "TON Campus Connect",
       category: "Web3 Education",
       description: "A grassroots initiative hosting workshops across universities to teach developers how to write smart contracts on the TON blockchain using Tact.",
-      status: "In Development"
+      status: "Funding Active"
     },
     {
       title: "Learn-to-Earn Telegram Mini-App",
@@ -29,7 +31,7 @@ export function ProjectGallery() {
             Transparent funding allocation for community-driven innovation.
           </p>
         </div>
-        
+
         <button style={styles.applyButton} disabled>
           <span style={styles.applyButtonContent}>
             <span style={styles.applyText}>Apply for Grant</span>
@@ -43,7 +45,7 @@ export function ProjectGallery() {
         {projects.map((proj, idx) => (
           <div key={idx} style={styles.projectCard}>
             <div style={styles.cardGlow}></div>
-            
+
             <div style={styles.categoryTag}>
               <span style={styles.tagText}>{proj.category}</span>
             </div>
@@ -82,184 +84,65 @@ export function ProjectGallery() {
   );
 }
 
-const styles = {
-  wrapper: {
-    width: '100%',
-    marginBottom: '48px'
-  },
+// Strictly Typed Styles with Mobile Overrides
+const styles: Record<string, React.CSSProperties> = {
+  wrapper: { width: '100%', marginBottom: '48px' },
+  
   headerSection: {
-    marginBottom: '32px',
-    padding: '32px',
-    background: 'linear-gradient(145deg, #0a0a0a, #111)',
-    borderRadius: '24px',
-    border: '1px solid rgba(212,175,55,0.25)',
-    position: 'relative' as const,
-    overflow: 'hidden',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexWrap: 'wrap' as const,
-    gap: '20px'
+    marginBottom: '32px', padding: '24px', 
+    background: 'linear-gradient(145deg, #0a0a0a, #111)', borderRadius: '24px',
+    border: '1px solid rgba(212,175,55,0.25)', position: 'relative', overflow: 'hidden',
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+    flexWrap: 'wrap', gap: '20px', 
+    textAlign: 'left' // FIXED: Forces left alignment on the header
   },
-  topGlow: {
-    position: 'absolute' as const,
-    top: 0,
-    left: 0,
-    right: 0,
-    height: '2px',
-    background: 'linear-gradient(90deg, transparent, gold, #b9f2ff, gold, transparent)'
-  },
-  headerContent: { flex: 1 },
-  accentBadge: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: '8px',
-    padding: '6px 14px',
-    background: 'rgba(212,175,55,0.1)',
-    border: '1px solid rgba(212,175,55,0.2)',
-    borderRadius: '20px',
-    marginBottom: '12px'
-  },
-  accentDot: {
-    width: '6px',
-    height: '6px',
-    borderRadius: '50%',
-    background: 'gold',
-    boxShadow: '0 0 8px gold'
-  },
-  accentText: {
-    fontSize: '10px',
-    fontWeight: '700',
-    color: 'gold',
-    textTransform: 'uppercase' as const,
-    letterSpacing: '1px'
-  },
-  mainTitle: {
-    margin: 0,
-    fontSize: '26px',
-    fontWeight: '700',
-    color: '#fff',
-    marginBottom: '8px'
-  },
-  headerDescription: {
-    margin: 0,
-    fontSize: '14px',
-    color: '#aaa'
-  },
-  applyButton: {
-    background: 'rgba(255, 255, 255, 0.05)',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
-    borderRadius: '12px',
-    cursor: 'not-allowed'
-  },
-  applyButtonContent: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '10px',
-    padding: '12px 20px'
-  },
-  applyText: { fontSize: '14px', fontWeight: '600', color: '#666' },
-  applyBadge: {
-    fontSize: '10px',
-    fontWeight: '700',
-    color: '#aaa',
-    padding: '4px 8px',
-    background: 'rgba(255, 255, 255, 0.05)',
-    borderRadius: '6px'
-  },
+  topGlow: { position: 'absolute', top: 0, left: 0, right: 0, height: '2px', background: 'linear-gradient(90deg, transparent, gold, #b9f2ff, gold, transparent)' },
+  
+  headerContent: { flex: '1 1 100%' }, 
+  accentBadge: { display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 14px', background: 'rgba(212,175,55,0.1)', border: '1px solid rgba(212,175,55,0.2)', borderRadius: '20px', marginBottom: '12px' },
+  accentDot: { width: '6px', height: '6px', borderRadius: '50%', background: 'gold', boxShadow: '0 0 8px gold' },
+  accentText: { fontSize: '10px', fontWeight: 700, color: 'gold', textTransform: 'uppercase', letterSpacing: '1px' },
+  mainTitle: { margin: '0 0 8px 0', fontSize: '24px', fontWeight: 700, color: '#fff' },
+  headerDescription: { margin: 0, fontSize: '14px', color: '#aaa' },
+  
+  applyButton: { background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '12px', cursor: 'not-allowed', padding: 0, width: '100%', maxWidth: '200px' }, 
+  applyButtonContent: { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', padding: '12px 20px' },
+  applyText: { fontSize: '14px', fontWeight: 600, color: '#666' },
+  applyBadge: { fontSize: '10px', fontWeight: 700, color: '#aaa', padding: '4px 8px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '6px' },
+
   projectsGrid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-    gap: '24px',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', // FIXED: Reduced from 320px to fit mobile screens perfectly
+    gap: '20px', 
     marginBottom: '32px'
   },
+  
   projectCard: {
-    background: 'linear-gradient(145deg, #0a0a0a, #111)',
-    border: '1px solid rgba(212,175,55,0.2)',
-    borderRadius: '24px',
-    padding: '28px',
-    display: 'flex',
-    flexDirection: 'column' as const,
-    gap: '20px',
-    position: 'relative' as const,
-    overflow: 'hidden',
-    boxShadow: '0 20px 40px rgba(0,0,0,0.4)'
+    background: 'linear-gradient(145deg, #0a0a0a, #111)', border: '1px solid rgba(212,175,55,0.2)',
+    borderRadius: '24px', padding: '24px', 
+    display: 'flex', flexDirection: 'column', gap: '16px', position: 'relative', overflow: 'hidden',
+    boxShadow: '0 20px 40px rgba(0,0,0,0.4)',
+    textAlign: 'left' // CRITICAL FIX: Overrides the inherited center alignment
   },
-  cardGlow: {
-    position: 'absolute' as const,
-    top: 0,
-    right: 0,
-    width: '100px',
-    height: '100px',
-    background: 'radial-gradient(circle, rgba(185,242,255,0.05) 0%, transparent 70%)',
-    pointerEvents: 'none' as const
-  },
-  categoryTag: {
-    padding: '6px 12px',
-    borderRadius: '8px',
-    background: 'rgba(185,242,255,0.08)',
-    border: '1px solid rgba(185,242,255,0.15)',
-    width: 'fit-content'
-  },
-  tagText: {
-    fontSize: '11px',
-    fontWeight: '700',
-    color: '#b9f2ff',
-    textTransform: 'uppercase' as const
-  },
+  cardGlow: { position: 'absolute', top: 0, right: 0, width: '100px', height: '100px', background: 'radial-gradient(circle, rgba(185,242,255,0.05) 0%, transparent 70%)', pointerEvents: 'none' },
+  
+  categoryTag: { padding: '6px 12px', borderRadius: '8px', background: 'rgba(185,242,255,0.08)', border: '1px solid rgba(185,242,255,0.15)', width: 'fit-content' },
+  tagText: { fontSize: '11px', fontWeight: 700, color: '#b9f2ff', textTransform: 'uppercase' },
   projectContent: { flex: 1 },
-  projectTitle: {
-    margin: '0 0 10px 0',
-    fontSize: '20px',
-    fontWeight: '700',
-    color: '#fff'
-  },
-  projectDescription: {
-    margin: 0,
-    fontSize: '14px',
-    color: '#aaa',
-    lineHeight: '1.6'
-  },
-  statusFooter: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    paddingTop: '20px',
-    borderTop: '1px solid rgba(255, 255, 255, 0.05)'
-  },
-  statusIndicator: { position: 'relative' as const, width: '10px', height: '10px' },
-  statusDot: {
-    width: '8px',
-    height: '8px',
-    background: '#00E676',
-    borderRadius: '50%',
-    position: 'absolute' as const,
-    zIndex: 2
-  },
-  statusPulse: {
-    width: '8px',
-    height: '8px',
-    background: '#00E676',
-    borderRadius: '50%',
-    position: 'absolute' as const,
-    opacity: 0.4,
-    animation: 'pulse 2s infinite'
-  },
-  statusLabel: { fontSize: '13px', fontWeight: '700', color: '#00E676' },
+  projectTitle: { margin: '0 0 8px 0', fontSize: '18px', fontWeight: 700, color: '#fff' }, 
+  projectDescription: { margin: 0, fontSize: '14px', color: '#aaa', lineHeight: '1.6' },
+  
+  statusFooter: { display: 'flex', alignItems: 'center', gap: '10px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.05)', flexWrap: 'wrap' }, 
+  statusIndicator: { position: 'relative', width: '10px', height: '10px' },
+  statusDot: { width: '8px', height: '8px', background: '#00E676', borderRadius: '50%', position: 'absolute', zIndex: 2 },
+  statusPulse: { width: '8px', height: '8px', background: '#00E676', borderRadius: '50%', position: 'absolute', opacity: 0.4, animation: 'pulse 2s infinite' },
+  statusLabel: { fontSize: '12px', fontWeight: 700, color: '#00E676' },
   statusDivider: { width: '1px', height: '14px', background: 'rgba(255, 255, 255, 0.1)' },
-  fundingText: { fontSize: '12px', color: '#555', fontWeight: '600' },
-  infoBar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: '24px',
-    padding: '16px',
-    background: 'rgba(212,175,55,0.03)',
-    borderRadius: '16px',
-    border: '1px solid rgba(212,175,55,0.1)'
-  },
+  fundingText: { fontSize: '12px', color: '#555', fontWeight: 600 },
+  
+  infoBar: { display: 'flex', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap', gap: '16px', padding: '16px', background: 'rgba(212,175,55,0.03)', borderRadius: '16px', border: '1px solid rgba(212,175,55,0.1)' },
   infoItem: { display: 'flex', alignItems: 'center', gap: '8px' },
   infoIcon: { fontSize: '14px' },
-  infoText: { fontSize: '12px', color: '#777', fontWeight: '500' },
-  infoDivider: { width: '1px', height: '16px', background: 'rgba(255, 255, 255, 0.05)' }
+  infoText: { fontSize: '12px', color: '#777', fontWeight: 500 },
+  infoDivider: { width: '1px', height: '16px', background: 'rgba(255, 255, 255, 0.05)' } 
 };
