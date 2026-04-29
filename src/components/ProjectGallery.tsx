@@ -4,7 +4,7 @@ export function ProjectGallery() {
       title: "TON Campus Connect",
       category: "Web3 Education",
       description: "A grassroots initiative hosting workshops across universities to teach developers how to write smart contracts on the TON blockchain using Tact.",
-      status: "Funding Active"
+      status: "In Development"
     },
     {
       title: "Learn-to-Earn Telegram Mini-App",
