@@ -57,8 +57,8 @@ export function Header() {
       
       {/* Left Side: Branding */}
       <div style={styles.branding}>
-        <h1 style={styles.title}>Lyvis Trust <span style={styles.logo}></span></h1>
-        <p style={styles.subtitle}>Built on The Open Network</p>
+        <h1 style={styles.title}>MYT<span style={styles.logo}></span></h1>
+        <p style={styles.subtitle}>Powered by ston.fi</p>
       </div>
 
       {/* Center: Desktop Navigation Pill (Hidden on Mobile) */}
